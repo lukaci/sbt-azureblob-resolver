@@ -1,4 +1,4 @@
-package info.lukaci.utils
+package io.github.lukaci.utils
 
 import io.reactivex.Single
 

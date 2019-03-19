@@ -1,10 +1,10 @@
-package info.lukaci.ivy
+package io.github.lukaci.ivy
 
 import java.net.URL
 
-import info.lukaci.utils.AsyncUtils._
-import info.lukaci.utils.AzureAsyncClient
-import info.lukaci.{AzureBlobStorageConfig, AzureBlobStorageCredentialsProvider, AzureBlobStorageRef}
+import io.github.lukaci.utils.AsyncUtils.{AtMost, _}
+import io.github.lukaci.utils.AzureAsyncClient
+import io.github.lukaci.{AzureBlobStorageConfig, AzureBlobStorageCredentialsProvider, AzureBlobStorageRef}
 import org.apache.ivy.plugins.repository.url.URLRepository
 
 import scala.collection.JavaConverters._

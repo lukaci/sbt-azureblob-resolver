@@ -1,4 +1,4 @@
-organization := "info.lukaci"
+organization := "io.github.lukaci"
 organizationName := "lukaci"
 organizationHomepage := Some(url("https://github.com/lukaci"))
 

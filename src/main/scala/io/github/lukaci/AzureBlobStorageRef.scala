@@ -1,4 +1,4 @@
-package info.lukaci
+package io.github.lukaci
 
 import java.net.{URI, URL}
 

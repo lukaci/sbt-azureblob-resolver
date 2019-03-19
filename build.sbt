@@ -2,7 +2,7 @@ sbtPlugin := true
 conflictManager := ConflictManager.default
 
 name         := "sbt-azureblob-resolver"
-organization := "info.lukaci"
+organization := "io.github.lukaci"
 description  := "SBT plugin which provides Azure BlobStorage bucket resolvers"
 version      := "0.10.0"
 

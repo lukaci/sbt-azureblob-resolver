@@ -1,4 +1,4 @@
-package info.lukaci.utils
+package io.github.lukaci.utils
 
 import java.io.{File, FileInputStream}
 import java.nio.channels.AsynchronousFileChannel
@@ -6,9 +6,9 @@ import java.nio.file.StandardOpenOption
 
 import com.microsoft.azure.storage.blob._
 import com.microsoft.azure.storage.blob.models.{BlobGetPropertiesResponse, BlobItem, ContainerListBlobHierarchySegmentResponse}
-import info.lukaci.AzureBlobStorageRef
-import info.lukaci.ivy.IvyAzureBlobStorageResource
-import info.lukaci.utils.AsyncUtils._
+import io.github.lukaci.AzureBlobStorageRef
+import io.github.lukaci.ivy.IvyAzureBlobStorageResource
+import io.github.lukaci.utils.AsyncUtils._
 
 import scala.collection.JavaConverters._
 import scala.concurrent.ExecutionContext.Implicits._
