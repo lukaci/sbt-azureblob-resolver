@@ -1,0 +1,11 @@
+# https://docs.travis-ci.com/user/languages/scala/
+language: scala
+scala:
+- 2.12.4
+jdk:
+- oraclejdk8
+script:
+- sbt --no-colors ++$TRAVIS_SCALA_VERSION compile
+notifications:
+  email: false
+sudo: false
