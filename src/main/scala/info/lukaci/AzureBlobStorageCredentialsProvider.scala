@@ -1,4 +1,4 @@
-package com.lukaci
+package info.lukaci
 
 import scala.util.{Failure, Try}
 

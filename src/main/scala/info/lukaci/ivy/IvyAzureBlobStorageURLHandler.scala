@@ -1,11 +1,11 @@
-package com.lukaci.ivy
+package info.lukaci.ivy
 
 import java.io.{File, FileInputStream, InputStream}
 import java.net._
 
-import com.lukaci.utils.AsyncUtils._
-import com.lukaci.utils.AzureAsyncClient
-import com.lukaci.{AzureBlobStorageConfig, AzureBlobStorageCredentialsProvider, AzureBlobStorageRef}
+import info.lukaci.utils.AsyncUtils.{AtMost, _}
+import info.lukaci.utils.AzureAsyncClient
+import info.lukaci.{AzureBlobStorageConfig, AzureBlobStorageCredentialsProvider, AzureBlobStorageRef}
 import org.apache.ivy.util.url.{URLHandler, URLHandlerDispatcher, URLHandlerRegistry}
 import org.apache.ivy.util.{CopyProgressEvent, CopyProgressListener}
 

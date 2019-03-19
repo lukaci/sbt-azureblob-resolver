@@ -1,6 +1,6 @@
-package com.lukaci.ivy
+package info.lukaci.ivy
 
-import com.lukaci.{AzureBlobStorageConfig, AzureBlobStorageCredentialsProvider}
+import info.lukaci.{AzureBlobStorageConfig, AzureBlobStorageCredentialsProvider}
 import org.apache.ivy.plugins.resolver.RepositoryResolver
 
 /**

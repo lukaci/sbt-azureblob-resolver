@@ -1,4 +1,4 @@
-package com.lukaci.ivy
+package info.lukaci.ivy
 
 import java.io.{IOException, InputStream}
 

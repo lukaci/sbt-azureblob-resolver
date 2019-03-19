@@ -1,4 +1,4 @@
-package com.lukaci
+package info.lukaci
 
 import java.io.{File, FileInputStream}
 import java.util.Properties

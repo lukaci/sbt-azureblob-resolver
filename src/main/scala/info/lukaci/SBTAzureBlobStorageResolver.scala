@@ -1,6 +1,6 @@
-package com.lukaci
+package info.lukaci
 
-import com.lukaci.ivy.IvyAzureBlobStorageURLHandler
+import info.lukaci.ivy.IvyAzureBlobStorageURLHandler
 import sbt.Keys._
 import sbt.{AutoPlugin, PluginTrigger, Setting, settingKey, _}
 

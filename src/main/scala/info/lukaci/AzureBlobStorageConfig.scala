@@ -1,4 +1,4 @@
-package com.lukaci
+package info.lukaci
 
 import scala.concurrent.duration._
 

@@ -12,7 +12,7 @@ Thanks to [`ohnosequences`](https://github.com/ohnosequences/sbt-s3-resolver) [`
 SBT 1.1 support is available using version `>= 0.10.0`:
 
 ```scala
-addSbtPlugin("com.lukaci" %% "sbt-azureblob-resolver" % "0.10.0")
+addSbtPlugin("info.lukaci" %% "sbt-azureblob-resolver" % "0.10.0")
 ```
 
 ## Examples
@@ -56,7 +56,7 @@ publishTo := Some(Resolver.url("Blob Snapshots", url("blob://youraccountname/sna
 ### Add this to your project/plugins.sbt file:
 
 ```scala
-addSbtPlugin("com.lukaci" %% "sbt-azureblob-resolver" % "0.10.0")
+addSbtPlugin("info.lukaci" %% "sbt-azureblob-resolver" % "0.10.0")
 ```
 
 ### Azure BlobStorage Credentials
