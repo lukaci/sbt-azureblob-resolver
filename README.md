@@ -1,6 +1,7 @@
 # Sbt Azure BlobStorage resolver
 
 [![Build Status](https://travis-ci.com/lukaci/sbt-azureblob-resolver.svg?branch=master)](https://travis-ci.com/lukaci/sbt-azureblob-resolver)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/lukaci/sbt-azureblob-resolver.svg)
 
 Plugin to ease resolving dependencies from and publish to Azure BlobStorage containers, using custom url syntax blob:// (default).
 
