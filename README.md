@@ -77,7 +77,7 @@ Credentials are checked in
 containing
 
 ```shell
-accessKeyId=XXXXXX
+accountKey=XXXXXX
 ```
 
 ### Custom Credentials
