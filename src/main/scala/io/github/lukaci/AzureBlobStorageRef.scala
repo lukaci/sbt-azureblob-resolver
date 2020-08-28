@@ -3,16 +3,33 @@ package io.github.lukaci
 import java.net.{URI, URL}
 
 import com.microsoft.azure.storage.blob._
+import sbt.ConsoleLogger
 
 /**
   * created by lukaci on 18/03/2019.
   */
 
-case class AzureBlobStorageRef(accountName: String, rootContainer: String, fileName: String, config: AzureBlobStorageConfig, provider: AzureBlobStorageCredentialsProvider) {
+case class AzureBlobStorageRef(accountName: String,
+                               rootContainer: String,
+                               fileName: String,
+                               config: AzureBlobStorageConfig,
+                               provider: AzureBlobStorageCredentialsProvider) {
+
+  private val logger = ConsoleLogger(System.out)
+
   def serviceUrl: ServiceURL = {
-    val cred = provider.provide(accountName)
-    val creds: SharedKeyCredentials = new SharedKeyCredentials(accountName, cred.key)
-    new ServiceURL(new URL(config.endpoint.replace("{ACCOUNT_NAME}", accountName)), StorageURL.createPipeline(creds, new PipelineOptions()))
+
+    val creds = provider.provide(accountName).fold({ errors =>
+      val errorMessage = s"Failed to get credentials to access [$accountName] Azure BLOB storage:" +
+        s"\r\n\t${errors.mkString("\r\n\t")}"
+      logger.error(errorMessage)
+      throw new IllegalArgumentException(errorMessage)
+    }, identity)
+
+    new ServiceURL(
+      new URL(config.endpoint.replace("{ACCOUNT_NAME}", accountName)),
+      StorageURL.createPipeline(creds, new PipelineOptions())
+    )
   }
 
   def rootContainerUrl: ContainerURL = serviceUrl.createContainerURL(rootContainer)

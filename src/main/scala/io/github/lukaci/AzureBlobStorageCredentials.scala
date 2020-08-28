@@ -7,30 +7,39 @@ import java.util.Properties
   * created by lukaci on 16/03/2019.
   */
 
-case class AzureBlobStorageCredentials(name: String, key: String)
-
 object AzureBlobStorageCredentials {
-  def fromEnv(accountName: String): AzureBlobStorageCredentials = {
-    val credentials = sys.env.getOrElse("BLOB_CREDENTIALS", { throw new IllegalArgumentException(s"environment variable BLOB_CREDENTIALS not found") })
 
-    val keyVal = credentials.split(':').toList.grouped(2).collectFirst { case `accountName` :: key :: Nil => key } getOrElse { throw new IllegalArgumentException(s"property [$accountName:<key>] not found environment variable BLOB_CREDENTIALS") }
-
-    AzureBlobStorageCredentials(key = keyVal, name = accountName)
+  def fromEnv(accountName: String, envName: String): Either[List[String], String] = {
+    sys.env.get(envName).toRight {
+      List(s"[$envName] environment variable is not defined")
+    }.flatMap { creds =>
+      creds.split(':').toList.grouped(2).collectFirst {
+        case `accountName` :: key :: Nil => key
+      } toRight {
+          List(s"Failed to extract credentials for [$accountName] from [$envName] environment variable. " +
+            s"It should has following format: <ACCOUNT_NAME_1>:<SECRET_KEY_1>:<ACCOUNT_NAME_2>:<SECRET_KEY_2>:...")
+      }
+    }
   }
 
-  def fromFile(accountName: String, postfix: String = "blob-credentials"): AzureBlobStorageCredentials = {
-    val filename = s".$accountName.$postfix"
-    val fil = new File(filename)
 
-    if(!fil.exists()) throw new IllegalArgumentException(s"given file [$filename] does not exist")
+  def fromFile(fileName: String): Either[List[String], String] = {
+    val file = new File(fileName)
 
-    val props = new Properties()
-    val stm = new FileInputStream(fil)
-    props.load(stm)
-    stm.close()
+    if (!file.exists()) {
+      Left(List(s"File [$fileName] does not exist"))
+    } else {
+      val props = new Properties()
+      val stm = new FileInputStream(file)
+      try {
+        props.load(stm)
+      } finally {
+        stm.close()
+      }
 
-    val keyVal = Option(props.getProperty("accountKey")) getOrElse { throw new IllegalArgumentException(s"given file [$filename] does not contain property 'accountKey'") }
-
-    AzureBlobStorageCredentials(key = keyVal, name = accountName)
+      Option(props.getProperty("accountKey")).toRight {
+        List(s"File [$fileName] does not contain 'accountKey' property")
+      }
+    }
   }
 }
